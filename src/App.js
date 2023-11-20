@@ -1,30 +1,29 @@
-import QrScannerPage from './components/QrScannerPage'
+import { React } from 'react'
 
-import {
-  createBrowserRouter,
-  RouterProvider,
-  Route,
-  Link,
-} from 'react-router-dom'
+import QrScannerPage from './components/QrScannerPage'
+import Home from './components/Home'
+
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: (
-      <div>
-        <h1>Hello World</h1>
-        <Link to="qr-scanner">Qr Scanner</Link>
-      </div>
-    ),
-  },
-  {
-    path: 'qr-scanner',
-    element: <QrScannerPage />,
+    element: <Home />,
+    children: [
+      {
+        path: 'qr-scanner',
+        element: <QrScannerPage />,
+      },
+    ],
   },
 ])
 
 const App = () => {
-  return <RouterProvider router={router} />
+  return (
+    <>
+      <RouterProvider router={router} />
+    </>
+  )
 }
 
 export default App
