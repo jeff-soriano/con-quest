@@ -1,13 +1,30 @@
-import { QrScanner } from '@yudiel/react-qr-scanner'
+import QrScannerPage from './components/QrScannerPage'
+
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Route,
+  Link,
+} from 'react-router-dom'
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: (
+      <div>
+        <h1>Hello World</h1>
+        <Link to="qr-scanner">Qr Scanner</Link>
+      </div>
+    ),
+  },
+  {
+    path: 'qr-scanner',
+    element: <QrScannerPage />,
+  },
+])
 
 const App = () => {
-  return (
-    <QrScanner
-      containerStyle={{ maxHeight: '100vh' }}
-      onDecode={(result) => console.log(result)}
-      onError={(error) => console.log(error?.message)}
-    />
-  )
+  return <RouterProvider router={router} />
 }
 
 export default App
