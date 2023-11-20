@@ -8,7 +8,7 @@ import Link from '@mui/material/Link'
 import { NavLink } from 'react-router-dom'
 
 const NAV_LINKS = {
-  Home: '',
+  Home: 'character',
   'QR Scanner': 'qr-scanner',
   Quests: 'quests',
 }

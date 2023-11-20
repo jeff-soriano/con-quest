@@ -1,18 +1,29 @@
 import { React } from 'react'
 
 import QrScannerPage from './components/QrScannerPage'
+import Character from './components/Character'
+import Quests from './components/Quests'
 import Home from './components/Home'
 
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { createBrowserRouter, RouterProvider, redirect } from 'react-router-dom'
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Home />,
     children: [
+      { index: true, loader: () => redirect('/character') },
+      {
+        path: 'character',
+        element: <Character />,
+      },
       {
         path: 'qr-scanner',
         element: <QrScannerPage />,
+      },
+      {
+        path: 'quests',
+        element: <Quests />,
       },
     ],
   },
