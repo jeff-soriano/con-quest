@@ -38,6 +38,7 @@ const NAV_LINKS = {
 
 const Home = () => {
   const [currentBottomNav, setCurrentBottomNav] = useState(0)
+  const [exp, setExp] = useState(25)
   const navigate = useNavigate()
 
   return (
@@ -57,11 +58,11 @@ const Home = () => {
           <BorderLinearProgress
             sx={{ marginLeft: '1rem', marginRight: '1rem' }}
             variant="determinate"
-            value={50}
+            value={exp}
           />
         </div>
       </div>
-      <Outlet />
+      <Outlet context={[exp, setExp]} />
       <Paper
         sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }}
         elevation={3}
