@@ -4,10 +4,12 @@ import { QrScanner } from '@yudiel/react-qr-scanner'
 const QrScannerPage = () => {
   const [result, setResult] = useState(null)
   return (
-    <div>
+    <div
+      style={{
+        marginTop: '25%',
+      }}
+    >
       <QrScanner
-        containerStyle={{ width: '25%', paddingTop: '25%' }}
-        videoStyle={{ borderWidth: '20px' }}
         viewFinder={() => (
           <svg
             viewBox="0 0 100 100"
@@ -25,26 +27,26 @@ const QrScannerPage = () => {
             <path
               fill="none"
               d="M23,0 L0,0 L0,23"
-              stroke="rgba(255, 0, 0, 0.5)"
-              stroke-width="5"
+              stroke="rgba(125, 125, 255, 0.5)"
+              strokeWidth="5"
             ></path>
             <path
               fill="none"
               d="M0,77 L0,100 L23,100"
-              stroke="rgba(255, 0, 0, 0.5)"
-              stroke-width="5"
+              stroke="rgba(125, 125, 255, 0.5)"
+              strokeWidth="5"
             ></path>
             <path
               fill="none"
               d="M77,100 L100,100 L100,77"
-              stroke="rgba(255, 0, 0, 0.5)"
-              stroke-width="5"
+              stroke="rgba(125, 125, 255, 0.5)"
+              strokeWidth="5"
             ></path>
             <path
               fill="none"
               d="M100,23 L100,0 77,0"
-              stroke="rgba(255, 0, 0, 0.5)"
-              stroke-width="5"
+              stroke="rgba(125, 125, 255, 0.5)"
+              strokeWidth="5"
             ></path>
           </svg>
         )}
