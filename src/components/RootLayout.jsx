@@ -37,8 +37,7 @@ const NAV_LINKS = {
 }
 
 const Home = () => {
-  const [isNavOpen, setIsNavOpen] = useState(false)
-  const [value, setValue] = useState(0)
+  const [currentBottomNav, setCurrentBottomNav] = useState(0)
   const navigate = useNavigate()
 
   return (
@@ -50,14 +49,13 @@ const Home = () => {
           boxShadow: '0px 2px 2px gray',
         }}
       >
-        <Navbar isOpen={isNavOpen} setIsOpen={setIsNavOpen} />
         <div style={{ textAlign: 'center' }}>
           <h1 style={{ marginBottom: '0', marginTop: '0', color: 'white' }}>
             Jefficus
           </h1>
           <h2 style={{ marginTop: '0', color: 'white' }}>Level 1</h2>
           <BorderLinearProgress
-            style={{ marginLeft: '1rem', marginRight: '1rem' }}
+            sx={{ marginLeft: '1rem', marginRight: '1rem' }}
             variant="determinate"
             value={50}
           />
@@ -70,13 +68,9 @@ const Home = () => {
       >
         <BottomNavigation
           showLabels
-          value={value}
-          onChange={(event, newValue) => {
-            setValue(newValue)
-            console.log(
-              'Object.entries(NAV_LINKS)[newValue][1].route',
-              Object.entries(NAV_LINKS)[newValue][1].route
-            )
+          value={currentBottomNav}
+          onChange={(_, newValue) => {
+            setCurrentBottomNav(newValue)
             navigate('/' + Object.entries(NAV_LINKS)[newValue][1].route)
           }}
         >
