@@ -1,14 +1,23 @@
 import { useState } from 'react'
 import { QrScanner } from '@yudiel/react-qr-scanner'
+import { useOutletContext } from 'react-router-dom'
+
+import Button from '@mui/material/Button'
 
 const QrScannerPage = () => {
   const [result, setResult] = useState(null)
-  return (
-    <div
-      style={{
-        marginTop: '25%',
-      }}
-    >
+  const [exp, setExp] = useOutletContext()
+
+  const addExp = () => setExp((xp) => (xp < 100 ? xp + 20 : xp))
+
+  const onDecode = (result) => {
+    setResult(result)
+    console.log(result)
+    addExp()
+  }
+
+  const qrScanner = () => (
+    <div>
       <QrScanner
         viewFinder={() => (
           <svg
@@ -50,13 +59,37 @@ const QrScannerPage = () => {
             ></path>
           </svg>
         )}
-        onDecode={(result) => {
-          setResult(result)
-          console.log(result)
-        }}
+        onDecode={onDecode}
         onError={(error) => console.log(error?.message)}
       />
-      {result && <p>{result}</p>}
+      <Button
+        style={{ marginTop: '20px' }}
+        onClick={() => onDecode('test')}
+        variant="contained"
+      >
+        QR code scanned
+      </Button>
+    </div>
+  )
+
+  const successfulScan = () => (
+    <div>
+      <p>You received 20xp!</p>
+      <Button onClick={() => setResult(null)} variant="contained">
+        New scan
+      </Button>
+    </div>
+  )
+
+  return (
+    <div
+      style={{
+        width: '90%',
+        margin: 'auto',
+        textAlign: 'center',
+      }}
+    >
+      {result ? successfulScan() : qrScanner()}
     </div>
   )
 }
