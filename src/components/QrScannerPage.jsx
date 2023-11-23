@@ -6,7 +6,7 @@ import Button from '@mui/material/Button'
 
 const QrScannerPage = () => {
   const [result, setResult] = useState(null)
-  const [exp, setExp] = useOutletContext()
+  const [setExp] = useOutletContext()
 
   const addExp = () => setExp((xp) => (xp < 100 ? xp + 20 : xp))
 

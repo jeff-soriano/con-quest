@@ -4,7 +4,7 @@ import { useOutletContext } from 'react-router-dom'
 import Button from '@mui/material/Button'
 
 const Quests = () => {
-  const [exp, setExp] = useOutletContext()
+  const [setExp] = useOutletContext()
 
   const addExp = () => setExp((xp) => (xp < 100 ? xp + 5 : xp))
 
