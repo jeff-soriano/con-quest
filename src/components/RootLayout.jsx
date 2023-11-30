@@ -71,7 +71,7 @@ const Home = () => {
           value={currentBottomNav}
           onChange={(_, newValue) => {
             setCurrentBottomNav(newValue)
-            navigate('/' + Object.entries(NAV_LINKS)[newValue][1].route)
+            navigate(Object.entries(NAV_LINKS)[newValue][1].route)
           }}
         >
           {Object.entries(NAV_LINKS).map(([key, value]) => (

@@ -9,17 +9,21 @@ import ListItemText from '@mui/material/ListItemText'
 import ListItemButton from '@mui/material/ListItemButton'
 import FolderIcon from '@mui/icons-material/Folder'
 import Avatar from '@mui/material/Avatar'
+import { useNavigate } from 'react-router-dom'
+import { Outlet } from 'react-router-dom'
 
 const Quests = () => {
   const [setExp] = useOutletContext()
 
   const addExp = () => setExp((xp) => (xp < 100 ? xp + 5 : xp))
 
+  const navigate = useNavigate()
+
   return (
     <div style={{ textAlign: 'center' }}>
       <List disablePadding>
         <ListItem disablePadding>
-          <ListItemButton>
+          <ListItemButton onClick={() => navigate('survey')}>
             <ListItemAvatar>
               <Avatar>
                 <FolderIcon />
@@ -39,6 +43,7 @@ const Quests = () => {
       >
         Add experience
       </Button>
+      <Outlet />
     </div>
   )
 }
